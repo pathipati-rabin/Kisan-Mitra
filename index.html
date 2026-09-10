@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisan Mitra - Crop Advisory Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <h1>Kisan Mitra - Crop Advisory Chatbot</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="intro-screen" id="introScreen">
+        <div class="logo">
+            <i class="fas fa-seedling" style="font-size: 40px; color: var(--primary);"></i>
+            <h2 class="intro-title">Welcome to Kisan Mitra!</h2>
+        </div>
+        <p>Please select your preferred language. We will try to automatically detect your location.</p>
+        <div class="intro-form">
+            <div>
+                <label for="initialLanguage">Select your Language:</label>
+                <select id="initialLanguage">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi (हिन्दी)</option>
+                    <option value="gu">Gujarati (ગુજરાતી)</option>
+                    <option value="ta">Tamil (தமிழ்)</option>
+                    <option value="te">Telugu (తెలుగు)</option>
+                    <option value="bn">Bengali (বাংলা)</option>
+                </select>
+            </div>
+            <div id="locationInputContainer" style="display: none;">
+                <label for="initialLocation">Enter your Location (e.g., city, state):</label>
+                <input type="text" id="initialLocation" placeholder="e.g., Bhopal, Madhya Pradesh">
+            </div>
+            <div class="location-status" id="locationStatus">
+                Detecting your location...
+            </div>
+            <button onclick="startChat()" id="startButton" class="hidden-button">Start Chat</button>
+        </div>
+    </div>
+
+    <div class="container main-content" id="mainContent">
+        <div class="options-panel">
+            <h2 id="optionsTitle">Quick Advisory Options</h2>
+            <div class="option-card" onclick="selectOption('crop-selection')">
+                <i class="fas fa-seedling"></i> <span class="option-text">Crop Selection Advice</span>
+            </div>
+            <div class="option-card" onclick="selectOption('pest-control')">
+                <i class="fas fa-bug"></i> <span class="option-text">Pest Control Advice</span>
+            </div>
+            <div class="option-card" onclick="selectOption('fertilizer')">
+                <i class="fas fa-flask"></i> <span class="option-text">Fertilizer Guidance</span>
+            </div>
+            <div class="option-card" onclick="selectOption('weather')">
+                <i class="fas fa-cloud-sun"></i> <span class="option-text">Weather Advisory</span>
+            </div>
+            <div class="option-card" onclick="selectOption('soil-health')">
+                <i class="fas fa-tint"></i> <span class="option-text">Soil Health Tips</span>
+            </div>
+            <div class="option-card" onclick="selectOption('market-prices')">
+                <i class="fas fa-rupee-sign"></i> <span class="option-text">Market Prices</span>
+            </div>
+            
+            <div class="language-selector">
+                <span><i class="fas fa-language"></i> Language:</span>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="bn">Bengali</option>
+                </select>
+            </div>
+            
+            <div class="voice-input">
+                <button class="voice-btn" onclick="toggleVoiceInput()" id="voiceBtn">
+                    <i class="fas fa-microphone"></i> <span id="voiceBtnText">Voice Input</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="chatbot-container">
+            <div class="chat-header">
+                <h2><i class="fas fa-robot"></i> Kisan Mitra Assistant</h2>
+                <div class="status">
+                    <span class="status-dot"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kisan Mitra - Smart Crop Advisory System</p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>
